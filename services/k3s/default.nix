@@ -42,9 +42,9 @@
             - "--certificatesresolvers.default.acme.httpchallenge.entrypoint=web"
           ports:
             web:
-              exposedPort: 9080
+              exposedPort: 80
             websecure:
-              exposedPort: 9443
+              exposedPort: 443
           providers:
             kubernetesGateway:
               enabled: true
@@ -54,8 +54,8 @@
 
   };
 
-  # open firewall on temp web ports
-  networking.firewall.allowedTCPPorts = [ 9080 9443 ];
-  networking.firewall.allowedUDPPorts = [ 9443 ];
+  # open firewall on web ports
+  networking.firewall.allowedTCPPorts = [ 80 443 ];
+  networking.firewall.allowedUDPPorts = [ 443 ];
 
 }

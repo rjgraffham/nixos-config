@@ -5,25 +5,9 @@ This is my NixOS config, plus some tooling for managing its inputs without
 flakes.
 
 > [!NOTE]
-> This branch is relatively inactive - there is work ongoing in the
-> [`containers`][containers] and [`kubernetes`][kubernetes] branches:
-> 
-> The `containers` branch is actively being worked on, and contains
-> the quadlet definitions for my currently active container deployments
-> of service using SystemD (still on the NixOS host).
-> with deploying services as containers
-> 
-> Further work is also planned in the `kubernetes` branch, with a goal
-> of translating the already proven container-based setup into a single-node
-> kubernetes deployment, which would initially be deployed on k3s on
-> NixOS, but would then be relatively straightforward to transplant onto
-> any kubernetes host (currently looking at Talos).
-> 
-> The goal here is to get ease of automatically updating containerized
-> deployments from a git source of truth in the short term, and to
-> provide a stepping stone to going multi-node in the longer term if
-> and when I have multiple reasonably power-efficient machines in
-> my homelab.
+> This repo is relatively inactive as my NixOS system itself is mostly
+> serving as a host for k3s - most work on my system is happening in the
+> [kubernetes configuration][kubernetes].
 
 
 ## Structure of this repo
@@ -113,5 +97,4 @@ the current hostname of the system they're running on).
 
 
 [tailscale]: https://tailscale.com/
-[containers]: https://github.com/rjgraffham/nixos-config-server/tree/containers
-[kubernetes]: https://github.com/rjgraffham/nixos-config-server/tree/kubernetes
+[kubernetes]: https://github.com/rjgraffham/server-config

@@ -54,8 +54,8 @@
 
   };
 
-  # open firewall on web ports
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
+  # open firewall on web ports and forgejo ssh port
+  networking.firewall.allowedTCPPorts = [ 80 443 30022 ];
   networking.firewall.allowedUDPPorts = [ 443 ];
 
 }

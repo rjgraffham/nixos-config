@@ -9,15 +9,15 @@
   "nixos-hardware": {
     "url": "https://github.com/NixOS/nixos-hardware",
     "branch": "master",
-    "rev": "44d95795ee2d475b3d687325e26dcf4ca9104557",
-    "narHash": "sha256-3jBEq8avfzlrsY4UpW4d5TOmm7ocseZfnitEJhqauyc=",
-    "lastModified": 1788335262
+    "rev": "62173785b9a18c78b4a15aca2623d02bceb9d077",
+    "narHash": "sha256-MhPMOFV4pVkygWEbQ8t1De/uQ9cWF1u++tRe2L5tG48=",
+    "lastModified": 1788860136
   },
   "nixpkgs": {
     "url": "https://github.com/NixOS/nixpkgs",
     "branch": "nixos-26.05",
-    "rev": "a5cc6f2c37bf518436dc8d1c288ccd0c43c2f4c4",
-    "narHash": "sha256-r2f1oUwixlgq9zOdYLqJLfS/lWBT60/IITjhTKI59JU=",
-    "lastModified": 1788405554
+    "rev": "93108a538f079596c9a16c72cf03e9322782b6dd",
+    "narHash": "sha256-J9oC0bKnkXUrMegqRTXVkyDFJ0gn2U/Qpoo9HgGMQmA=",
+    "lastModified": 1788807765
   }
 }

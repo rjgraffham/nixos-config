@@ -18,6 +18,10 @@
     extraFlags = [
       "--write-kubeconfig-mode 640"
       "--write-kubeconfig-group wheel"
+      "--kube-apiserver-arg oidc-issuer-url=https://idp.raven-ghost.ts.net/"
+      "--kube-apiserver-arg oidc-client-id=kube-apiserver"
+      "--kube-apiserver-arg oidc-username-claim=email"
+      "--kube-apiserver-arg oidc-groups-claim=tags"
     ];
 
     # attempt to stop pods cleanly on host shutdown, delaying host shutdown if needed

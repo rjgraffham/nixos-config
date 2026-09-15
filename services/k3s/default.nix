@@ -18,7 +18,7 @@
     extraFlags = [
       "--write-kubeconfig-mode 640"
       "--write-kubeconfig-group wheel"
-      "--kube-apiserver-arg oidc-issuer-url=https://idp.raven-ghost.ts.net/"
+      "--kube-apiserver-arg oidc-issuer-url=https://idp.raven-ghost.ts.net"
       "--kube-apiserver-arg oidc-client-id=b6d530a3283089ef2fa316dc7608baf1"
       "--kube-apiserver-arg oidc-username-claim=email"
       "--kube-apiserver-arg oidc-groups-claim=tags"

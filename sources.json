@@ -2,22 +2,22 @@
   "agenix": {
     "url": "https://github.com/ryantm/agenix",
     "branch": "main",
-    "rev": "b027ee29d959fda4b60b57566d64c98a202e0feb",
-    "narHash": "sha256-9VnK6Oqai65puVJ4WYtCTvlJeXxMzAp/69HhQuTdl/I=",
-    "lastModified": 1770165109
+    "rev": "654f73179924797b0d5307105398aedfcdc10800",
+    "narHash": "sha256-5T54NUBA0c1eo7a8MMT1GOuFYsDqqa91rLWp7l/xPC8=",
+    "lastModified": 1790460690
   },
   "nixos-hardware": {
     "url": "https://github.com/NixOS/nixos-hardware",
     "branch": "master",
-    "rev": "d40fd26f323c898b0c195d41aa5efadd85f57832",
-    "narHash": "sha256-xV9fcqtH6jJLVBF3ocqBBwZkPKEke+BujhEwT4Ye9Tc=",
-    "lastModified": 1789417814
+    "rev": "30d48a0ec6035f8140d0125af274f0de95f1e9b5",
+    "narHash": "sha256-mZGHLGi217oLIwzDM4PNRZeCNa6g2WBXURyXbNMFs7Y=",
+    "lastModified": 1790321948
   },
   "nixpkgs": {
     "url": "https://github.com/NixOS/nixpkgs",
     "branch": "nixos-26.05",
-    "rev": "c3eea5b2156db11c7eeeada3dc737711255b253e",
-    "narHash": "sha256-vdhpDJ3Lr24lkZ+fDCjmBRRtw9/vcSzkqGJOJyF5h2U=",
-    "lastModified": 1789344334
+    "rev": "5e2305d577ca00acbba631b05cb1094d172b29f3",
+    "narHash": "sha256-/eLCD/X9kaWJqPR47+fDozEC87Hjmm3i8gJbYmDAD7g=",
+    "lastModified": 1790450978
   }
 }

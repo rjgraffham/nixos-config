@@ -133,10 +133,10 @@ store_path="$(echo "$metadata" | jq -r .outPath)"
 cd $(dirname $0)
 
 if [[ -n "$do_eval" ]]; then
-	"${NIXCMD[@]}" eval -f "$store_path/build.nix" "$attr" --argstr hostname "$hostname" --argstr inject-self-source "$metadata"
+	"${NIXCMD[@]}" eval -f "$store_path/build.nix" "$attr" --argstr hostname "$hostname"
 	exit
 else
-	toplevel="$("${NIXCMD[@]}" build "${build_args[@]}" -f "$store_path/build.nix" "$attr" --argstr hostname "$hostname" --argstr inject-self-source "$metadata")"
+	toplevel="$("${NIXCMD[@]}" build "${build_args[@]}" -f "$store_path/build.nix" "$attr" --argstr hostname "$hostname")"
 fi
 
 

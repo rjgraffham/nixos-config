@@ -2,22 +2,22 @@
   "agenix": {
     "url": "https://github.com/ryantm/agenix",
     "branch": "main",
-    "rev": "654f73179924797b0d5307105398aedfcdc10800",
-    "narHash": "sha256-5T54NUBA0c1eo7a8MMT1GOuFYsDqqa91rLWp7l/xPC8=",
-    "lastModified": 1790460690
+    "rev": "3daa710894355fa2fad8243380af373a2b4046ef",
+    "narHash": "sha256-n7wew722m1OTBT9DOIMxNX/NF4zfsSUABAO5eW3wikE=",
+    "lastModified": 1790734419
   },
   "nixos-hardware": {
     "url": "https://github.com/NixOS/nixos-hardware",
     "branch": "master",
-    "rev": "30d48a0ec6035f8140d0125af274f0de95f1e9b5",
-    "narHash": "sha256-mZGHLGi217oLIwzDM4PNRZeCNa6g2WBXURyXbNMFs7Y=",
-    "lastModified": 1790321948
+    "rev": "60a624466c08787ee8303393b7d4752d1826f14f",
+    "narHash": "sha256-BYhx89XJltnRyQeuDKHVL5eSqbbfAcOKuDts7QRsrxQ=",
+    "lastModified": 1791721963
   },
   "nixpkgs": {
     "url": "https://github.com/NixOS/nixpkgs",
     "branch": "nixos-26.05",
-    "rev": "5e2305d577ca00acbba631b05cb1094d172b29f3",
-    "narHash": "sha256-/eLCD/X9kaWJqPR47+fDozEC87Hjmm3i8gJbYmDAD7g=",
-    "lastModified": 1790450978
+    "rev": "7993f34ee47e28a3d607a525aadc6c94b73be728",
+    "narHash": "sha256-ZGq3ptZzA+oO0N/Wi/F+GbuTijLkYExD01LvpNFAvr0=",
+    "lastModified": 1791765022
   }
 }

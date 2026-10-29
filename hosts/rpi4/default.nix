@@ -86,9 +86,6 @@ in
   # allow unprivileged user to listen to ports >= 80 (to allow caddy container to run as user)
   boot.kernel.sysctl."net.ipv4.ip_unprivileged_port_start" = 80;
 
-  # disable multipath tcp (CVE-2026-98432)
-  boot.kernel.sysctl."net.mptcp.enabled" = 0;
-
   # fully spin up Argon One case fan on boot
   systemd.services."argon-one-fan-spindown" = {
     wantedBy = [ "multi-user.target" ];

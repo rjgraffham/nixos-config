@@ -58,8 +58,8 @@
 
   };
 
-  # open firewall on web ports and forgejo ssh port
-  networking.firewall.allowedTCPPorts = [ 80 443 30022 ];
-  networking.firewall.allowedUDPPorts = [ 443 ];
+  # open firewall on web ports, syncthing ports, and forgejo ssh port
+  networking.firewall.allowedTCPPorts = [ 80 443 22000 30022 ];
+  networking.firewall.allowedUDPPorts = [ 443 21027 22000 ];
 
 }

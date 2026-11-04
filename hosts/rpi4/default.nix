@@ -79,10 +79,6 @@ in
   # enable bluetooth
   hardware.bluetooth.enable = true;
 
-  # open firewall on web and syncthing ports (services are in containers so not automatic)
-  networking.firewall.allowedTCPPorts = [ 80 443 22000 ];
-  networking.firewall.allowedUDPPorts = [ 443 21027 22000 ];
-
   # allow unprivileged user to listen to ports >= 80 (to allow caddy container to run as user)
   boot.kernel.sysctl."net.ipv4.ip_unprivileged_port_start" = 80;
 

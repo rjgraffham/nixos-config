@@ -52,6 +52,8 @@
           providers:
             kubernetesGateway:
               enabled: true
+          service:
+            allocateLoadBalancerNodePorts: false
         '';
       };
     };

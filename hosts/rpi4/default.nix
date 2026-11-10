@@ -19,17 +19,10 @@ in
     # networking configuration
     ./network.nix
 
-    # system-wide programs
-    ../../programs/neovim
-    ../../programs/starship
-    ../../programs/tmux
-    ../../modules/podman.nix
-
     # nix configuration
     ../../nix
 
     # external modules
-    "${sources.agenix}/modules/age.nix"
     "${sources.nixos-hardware}/raspberry-pi/4"
   ];
 
@@ -114,10 +107,5 @@ in
     "vm.watermark_scale_factor" = 125;
     "vm.page-cluster" = 0;
   };
-
-  # add agenix to PATH
-  environment.systemPackages = with pkgs; [
-    (pkgs.callPackage "${sources.agenix}/pkgs/agenix.nix" {})
-  ];
 
 }

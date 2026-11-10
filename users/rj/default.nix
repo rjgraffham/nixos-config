@@ -16,10 +16,6 @@
       jq
       just
       git
-      ripgrep
-      bat
-      borgbackup
-      sshfs
     ];
 
     openssh.authorizedKeys.keys = [

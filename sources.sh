@@ -233,7 +233,7 @@ case $COMMAND in
 		done
 
 		# If the updated sources list is non-empty, create the commit
-		if [[ -n "{updated_sources}" ]]; then
+		if [[ -n "${updated_sources}" ]]; then
 			commit_msg="(sources) Update ${updated_sources}${commit_body}"
 			git commit sources.json -m "$(echo -e "${commit_msg}")"
 		fi
@@ -241,6 +241,12 @@ case $COMMAND in
 		# unstash previously stashed changes, if any
 		if [[ -n "${stashed_changes}" ]]; then
 			git stash pop -q
+		fi
+
+		# If we're running unattended and no sources were updated,
+		# exit with a non-zero code to signal that to the caller.
+		if [[ -n "${auto_commit}" ]] && [[ -z "${updated_sources}" ]]; then
+			exit 1
 		fi
 
 		;;

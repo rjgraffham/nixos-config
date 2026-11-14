@@ -57,10 +57,20 @@ if [[ "$#" -gt "0" ]]; then
 	shift 1
 fi
 
-# we have a special case for checking for updates without applying
+# `check` is `update` without applying
 dry_update=
 if [[ "$COMMAND" = "check" ]]; then
 	dry_update=yes
+	COMMAND=update
+fi
+
+# `unattended` is `update` with automatic commit
+dry_update=
+if [[ "$COMMAND" = "unattended" ]]; then
+	auto_commit=yes
+	stashed_changes=
+        updated_sources=
+	commit_body=
 	COMMAND=update
 fi
 
@@ -168,6 +178,21 @@ case $COMMAND in
 			sources=$*
 		fi
 
+		# if we're creating a commit, stash anything else that might be in-progress. if
+		# sources.json itself has been modified, refuse to continue as we may commit
+		# changes that were not supposed to be committed
+		if [[ -n "${auto_commit}" ]]; then
+			if [[ -n "$(git status --porcelain=2 :/sources.json)" ]]; then
+				echo -e "Uncommitted changes to \033[1msources.json\033[0m, refusing to continue."
+				exit
+			fi
+
+			if [[ -n "$(git status --porcelain=2)" ]]; then
+				git stash push -q
+				stashed_changes=yes
+			fi
+		fi
+
 		for src in $sources; do
 			url="$(jq -r ".[\"$src\"].url" < "$SOURCES_JSON")"
 			branch="$(jq -r ".[\"$src\"].branch" < "$SOURCES_JSON")"
@@ -192,10 +217,32 @@ case $COMMAND in
 				rm "$tmp"
 
 				echo "Done."
+
+				# Add this source to the list in the commit message
+				if [[ -n "${updated_sources}" ]]; then
+					updated_sources="${updated_sources}, $src"
+				else
+					updated_sources="$src"
+				fi
+
+				# Add source and new revision to the commit body
+				commit_body="${commit_body}\n\nUpdated $src to revision $rev"
 			fi
 
 			echo
 		done
+
+		# If the updated sources list is non-empty, create the commit
+		if [[ -n "{updated_sources}" ]]; then
+			commit_msg="(sources) Update ${updated_sources}${commit_body}"
+			git commit sources.json -m "$(echo -e "${commit_msg}")"
+		fi
+
+		# unstash previously stashed changes, if any
+		if [[ -n "${stashed_changes}" ]]; then
+			git stash pop -q
+		fi
+
 		;;
 	*)
 		echo "USAGE: $SOURCES_ROOT/sources.sh <COMMAND> [<ARGS...>]"
@@ -213,9 +260,11 @@ case $COMMAND in
 		echo
 		echo "  update [<SOURCES...>]"
 		echo "  check [<SOURCES...>]"
+		echo "  unattended [<SOURCES...>]"
 		echo "      Updates sources to the latest revision. If one or more SOURCEs is passed,"
 		echo "      update only those sources. For check, don't apply the updates, just"
-		echo "      display them."
+		echo "      display them. For unattended, apply the updates and create a new commit"
+		echo "      detailing the updates applied."
 		;;
 esac
 

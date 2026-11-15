@@ -58,19 +58,14 @@ if [[ "$#" -gt "0" ]]; then
 fi
 
 # `check` is `update` without applying
-dry_update=
 if [[ "$COMMAND" = "check" ]]; then
 	dry_update=yes
 	COMMAND=update
 fi
 
 # `unattended` is `update` with automatic commit
-dry_update=
 if [[ "$COMMAND" = "unattended" ]]; then
 	auto_commit=yes
-	stashed_changes=
-        updated_sources=
-	commit_body=
 	COMMAND=update
 fi
 
@@ -181,7 +176,7 @@ case $COMMAND in
 		# if we're creating a commit, stash anything else that might be in-progress. if
 		# sources.json itself has been modified, refuse to continue as we may commit
 		# changes that were not supposed to be committed
-		if [[ -n "${auto_commit}" ]]; then
+		if [[ -n "${auto_commit:-}" ]]; then
 			if [[ -n "$(git status --porcelain=2 :/sources.json)" ]]; then
 				echo -e "Uncommitted changes to \033[1msources.json\033[0m, refusing to continue."
 				exit
@@ -203,7 +198,7 @@ case $COMMAND in
 
 			if [[ "$oldrev" = "$rev" ]]; then
 				echo -e "Already up to date."
-			elif [[ -n "$dry_update" ]]; then
+			elif [[ -n "${dry_update:-}" ]]; then
 				echo -e "Would update to revision \033[1m$rev\033[0m."
 			else
 				echo -e "Updating to revision \033[1m$rev\033[0m..."
@@ -219,33 +214,33 @@ case $COMMAND in
 				echo "Done."
 
 				# Add this source to the list in the commit message
-				if [[ -n "${updated_sources}" ]]; then
-					updated_sources="${updated_sources}, $src"
+				if [[ -n "${updated_sources:-}" ]]; then
+					updated_sources="${updated_sources:-}, $src"
 				else
 					updated_sources="$src"
 				fi
 
 				# Add source and new revision to the commit body
-				commit_body="${commit_body}\n\nUpdated $src to revision $rev"
+				commit_body="${commit_body:-}\n\nUpdated $src to revision $rev"
 			fi
 
 			echo
 		done
 
 		# If the updated sources list is non-empty, create the commit
-		if [[ -n "${updated_sources}" ]]; then
-			commit_msg="(sources) Update ${updated_sources}${commit_body}"
-			git commit sources.json -m "$(echo -e "${commit_msg}")"
+		if [[ -n "${updated_sources:-}" ]]; then
+			commit_msg="(sources) Update ${updated_sources}${commit_body:-}"
+			git commit "$SOURCES_ROOT/sources.json" -m "$(echo -e "${commit_msg}")"
 		fi
 
 		# unstash previously stashed changes, if any
-		if [[ -n "${stashed_changes}" ]]; then
+		if [[ -n "${stashed_changes:-}" ]]; then
 			git stash pop -q
 		fi
 
 		# If we're running unattended and no sources were updated,
 		# exit with a non-zero code to signal that to the caller.
-		if [[ -n "${auto_commit}" ]] && [[ -z "${updated_sources}" ]]; then
+		if [[ -n "${auto_commit:-}" ]] && [[ -z "${updated_sources:-}" ]]; then
 			exit 1
 		fi
 

@@ -2,8 +2,7 @@ alias up := update
 alias pup := post-update
 
 update:
-	./sources.sh update
-	git commit sources.json -m '(sources) Update inputs'
+	./sources.sh unattended
 	./build.sh boot
 	git push
 	kubectl drain rpi4 --ignore-daemonsets --delete-emptydir-data

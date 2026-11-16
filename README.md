@@ -47,18 +47,6 @@ support in Nix tooling, including creating entries in the flake registry
 for the nixpkgs inputs used to build the system.
 
 
-### `programs`
-
-Configuration for programs that need more than simply having their packages
-added to the user environment:
-
-- `neovim`
-
-- `starship`
-
-- `tmux`
-
-
 ### `services`
 
 Configuration for services:

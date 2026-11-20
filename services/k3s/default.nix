@@ -49,6 +49,16 @@
               exposedPort: 80
             websecure:
               exposedPort: 443
+            mqtt:
+              port: 1883
+              expose:
+                default: true
+              exposedPort: 1883
+            git:
+              port: 2222
+              expose:
+                default: true
+              exposedPort: 2222
           providers:
             kubernetesGateway:
               enabled: true

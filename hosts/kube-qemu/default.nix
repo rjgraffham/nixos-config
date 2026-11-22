@@ -49,6 +49,14 @@ in
   # clean /tmp on boot
   boot.tmp.cleanOnBoot = true;
 
+  # locate root by the default label applied to a vm boot disk
+  fileSystems = {
+    "/" = {
+      device = "/dev/disk/by-label/nixos";
+      fsType = "ext4";
+    };
+  };
+
   # configure zram swap with the default limit of 50% physical RAM
   zramSwap.enable = true;
 

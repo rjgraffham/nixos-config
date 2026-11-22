@@ -1,4 +1,16 @@
-# NixOS config
+# NixOS config (experimental branch)
+
+> [!WARNING]
+> This is an extremely experimental branch where I'm testing out a bare
+> kubernetes setup (just `services.kubernetes` and installing things on
+> top of that) instead of k3s, in order to have greater control over
+> what gets installed on my cluster, and to learn to operate kubernetes
+> without the creature comforts of k3s.
+>
+> It is entirely possible than any particular commit on this branch may
+> be broken, and it's almost a certainty it will not be suitable for
+> actually booting into, as it's intended to be used in a qemu VM while
+> testing.
 
 
 This is my NixOS config, plus some tooling for managing its inputs without

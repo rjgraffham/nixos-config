@@ -14,4 +14,12 @@ in
     ];
   };
 
+  kube-qemu = rec {
+    system = "x86_64-linux";
+    config = ./kube-qemu/default.nix;
+    nixpkgs = sources.nixpkgs;
+    overlays = [
+    ];
+  };
+
 }

@@ -15,6 +15,9 @@ in
     # networking configuration
     ./network.nix
 
+    # kubernetes configuration
+    ../../services/kubernetes
+
     # nix configuration
     ../../nix
   ];
